@@ -2,6 +2,7 @@ package com.mewz.themoviebooking.activities
 
 import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -32,7 +33,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+
+        if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            setContentView(binding.root)
+        }else{
+            setContentView(binding.root)
+        }
 
         val city = intent?.getStringExtra(EXTRA_CITY) ?: ""
         // Toast.makeText(this, city, Toast.LENGTH_LONG).show()

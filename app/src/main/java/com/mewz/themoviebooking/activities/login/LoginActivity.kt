@@ -2,6 +2,7 @@ package com.mewz.themoviebooking.activities.login
 
 import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatEditText
@@ -34,7 +35,13 @@ class LoginActivity : BaseActivity(), LoginView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+
+        if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            setContentView(binding.root)
+        }else{
+            setContentView(binding.root)
+        }
+
 
         setUpPresenter()
         setUpListeners()
@@ -63,6 +70,7 @@ class LoginActivity : BaseActivity(), LoginView {
             )
 
         }
+
     }
 
     override fun navigateToOTPScreen(phone: String, message: String) {

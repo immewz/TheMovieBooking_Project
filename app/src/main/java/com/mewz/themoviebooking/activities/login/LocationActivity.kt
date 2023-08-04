@@ -2,6 +2,7 @@ package com.mewz.themoviebooking.activities.login
 
 import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -42,7 +43,12 @@ class LocationActivity : BaseActivity(), LocationView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLocationBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+
+        if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            setContentView(binding.root)
+        }else{
+            setContentView(binding.root)
+        }
 
         val otp = intent?.getStringExtra(EXTRA_OTP) ?: ""
         val token = intent?.getStringExtra(EXTRA_TOKEN) ?: ""

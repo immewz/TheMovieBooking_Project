@@ -2,6 +2,7 @@ package com.mewz.themoviebooking.activities.login
 
 import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import android.widget.Toast
 import com.mewz.themoviebooking.activities.BaseActivity
@@ -37,7 +38,12 @@ class OtpActivity : BaseActivity(), com.mewz.themoviebooking.mvp.views.OtpView{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityOtpBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+
+        if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            setContentView(binding.root)
+        }else{
+            setContentView(binding.root)
+        }
 
         mPhone = intent?.getStringExtra(EXTRA_PHONE) ?: ""
         val message = intent?.getStringExtra(EXTRA_MESSAGE) ?: ""
