@@ -72,6 +72,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
     private fun switchFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragmentContainer, fragment)

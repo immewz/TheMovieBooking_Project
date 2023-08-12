@@ -8,4 +8,6 @@ class TheMovieBookingApp: Application() {
         super.onCreate()
         TheMovieBookingModelImpl.initTheMovieBookingDatabase(applicationContext)
     }
+
+
 }

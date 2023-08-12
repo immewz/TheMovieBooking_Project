@@ -159,5 +159,7 @@
     <string name="lbl_choose_snack_count">0</string>
     <string name="lbl_search_movie">search the movie</string>
 
+    <string name="msg_token_fmt">Messaging Token : </string>
+
 
 </resources>

@@ -13,10 +13,13 @@ import com.mewz.themoviebooking.data.vos.movie.MovieVO
 import com.mewz.themoviebooking.data.vos.snack.SnackCategoryVO
 import com.mewz.themoviebooking.data.vos.snack.SnackVO
 import com.mewz.themoviebooking.data.vos.ticket.TicketInformation
+import com.mewz.themoviebooking.network.remote_config.FirebaseRemoteConfigManager
 import com.mewz.themoviebooking.network.responses.LogoutResponse
 import com.mewz.themoviebooking.network.responses.OtpResponse
 
 interface TheMovieBookingModel {
+
+    var mFirebaseRemoteConfigManager : FirebaseRemoteConfigManager
 
     fun insertCities(
         onSuccess: (List<CitiesVO>) -> Unit,
@@ -134,6 +137,9 @@ interface TheMovieBookingModel {
 
     fun getAllTickets(): List<TicketInformation>?
 
-
     fun deleteTicket(ticketId: Int)
+
+    fun setUpRemoteConfigWithDefaultValues()
+    fun fetchRemoteConfigs()
+    fun getLoginSentence(): String
 }

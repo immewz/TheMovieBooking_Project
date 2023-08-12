@@ -19,6 +19,7 @@ import com.mewz.themoviebooking.data.vos.ticket.TicketInformation
 import com.mewz.themoviebooking.persistance.TheMovieBookingRoomDatabase
 import com.mewz.themoviebooking.network.data_agents.RetrofitDataAgentImpl
 import com.mewz.themoviebooking.network.data_agents.TheMovieBookingDataAgent
+import com.mewz.themoviebooking.network.remote_config.FirebaseRemoteConfigManager
 import com.mewz.themoviebooking.network.responses.LogoutResponse
 import com.mewz.themoviebooking.network.responses.OtpResponse
 
@@ -28,9 +29,12 @@ object TheMovieBookingModelImpl: TheMovieBookingModel {
     private var mTheMovieBookingRoomDatabase: TheMovieBookingRoomDatabase? = null
     private var mMovie: MovieVO? = null
 
+    override var mFirebaseRemoteConfigManager: FirebaseRemoteConfigManager = FirebaseRemoteConfigManager
     fun initTheMovieBookingDatabase(context: Context) {
         mTheMovieBookingRoomDatabase = TheMovieBookingRoomDatabase.getDBInstance(context)
     }
+
+
 
     override fun insertCities(onSuccess: (List<CitiesVO>) -> Unit, onFailure: (String) -> Unit) {
         mTheMovieBookingDataAgent.getCities(
@@ -222,4 +226,18 @@ object TheMovieBookingModelImpl: TheMovieBookingModel {
     override fun deleteTicket(ticketId: Int) {
         mTheMovieBookingRoomDatabase?.getDao()?.deleteTicket(ticketId)
     }
+
+    override fun setUpRemoteConfigWithDefaultValues() {
+        mFirebaseRemoteConfigManager.setUpRemoteConfigWithDefaultValue()
+    }
+
+    override fun fetchRemoteConfigs() {
+        mFirebaseRemoteConfigManager.fetchRemoteConfigs()
+    }
+
+    override fun getLoginSentence(): String {
+        return mFirebaseRemoteConfigManager.getLoginSentence()
+    }
+
+
 }

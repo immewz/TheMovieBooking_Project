@@ -37,6 +37,8 @@ class LogoActivity : BaseActivity(), LogoView{
 
         setUpRequestData()
 
+        mPresenter.onUiReady(this, this)
+
     }
 
     private fun setUpPresenter() {
